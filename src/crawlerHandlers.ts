@@ -30,7 +30,7 @@ export async function handleRequest({
 
   if (links.length === 0) {
     const content = await page.content();
-    enhancedLog("error", "No links found. HTML content:", { content });
+    console.log(content)
   } else {
     await saveLinksToFile(url, links);
   }
