@@ -17,6 +17,7 @@ const crawler = new PlaywrightCrawler({
     });
   },
   maxRequestsPerCrawl: 20,
+  headless: false, // Set to false to show the browser
 });
 
 log.setLevel(LogLevel.INFO);
