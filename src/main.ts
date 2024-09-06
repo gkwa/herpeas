@@ -1,5 +1,6 @@
 import { PlaywrightCrawler, LogLevel, log } from "crawlee";
 import fs from "fs/promises";
+import crypto from "crypto";
 
 interface LinkData {
   originalLink: string;
@@ -10,47 +11,47 @@ interface LinkData {
 const startUrl = process.env.START_URL || "https://crawlee.dev";
 const outputFile = "links.json";
 
+function hashUrl(url: string): string {
+  return crypto.createHash("md5").update(url).digest("hex");
+}
+
+async function saveLinksToFile(url: string, links: LinkData[]): Promise<void> {
+  const fileName = `${hashUrl(url)}.json`;
+  await fs.writeFile(fileName, JSON.stringify(links, null, 2));
+  log.info(`Links for ${url} written to ${fileName}`);
+}
+
 const crawler = new PlaywrightCrawler({
   async requestHandler({ request, page, log }) {
-    try {
-      const linksFileExists = await fs
-        .access(outputFile)
-        .then(() => true)
-        .catch(() => false);
+    const url = request.loadedUrl || request.url;
+    const title = await page.title();
+    log.info(`Title of ${url} is '${title}'`);
 
-      if (linksFileExists) {
-        log.info(`${outputFile} already exists. Skipping crawl.`);
-        return;
-      }
-
-      const title = await page.title();
-      log.info(`Title of ${request.loadedUrl} is '${title}'`);
-
-      const links: LinkData[] = await page.evaluate(() => {
-        const linkElements = document.querySelectorAll('a[href*="go.php?ID="]');
-        return Array.from(linkElements).map((el) => {
-          const href = el.getAttribute("href");
-          const match = href?.match(/go\.php\?ID=\d+&URL=(.+)/);
-          return {
-            originalLink: href || "",
-            parsedUrl: match ? decodeURIComponent(match[1]) : "",
-            visited: false,
-          };
-        });
+    const links: LinkData[] = await page.evaluate(() => {
+      const linkElements = document.querySelectorAll('a[href*="go.php?ID="]');
+      return Array.from(linkElements).map((el) => {
+        const href = el.getAttribute("href");
+        const match = href?.match(/go\.php\?ID=\d+&URL=(.+)/);
+        return {
+          originalLink: href || "",
+          parsedUrl: match ? decodeURIComponent(match[1]) : "",
+          visited: false,
+        };
       });
+    });
 
-      log.info(`Found ${links.length} matching links`);
-      links.forEach((link, index) => {
-        log.info(`${index + 1}. ${link.parsedUrl}`);
-      });
-      log.info(`Total links found: ${links.length}`);
+    log.info(`Found ${links.length} matching links on ${url}`);
+    await saveLinksToFile(url, links);
 
-      await fs.writeFile(outputFile, JSON.stringify(links, null, 2));
-      log.info(`Links written to ${outputFile}`);
-    } catch (error) {
-      log.error("An error occurred:", {
-        error: error instanceof Error ? error.message : String(error),
-      });
+    // Update the main links.json file
+    const mainLinks: LinkData[] = JSON.parse(
+      await fs.readFile(outputFile, "utf-8"),
+    );
+    const currentLink = mainLinks.find((link) => link.parsedUrl === url);
+    if (currentLink) {
+      currentLink.visited = true;
+      await fs.writeFile(outputFile, JSON.stringify(mainLinks, null, 2));
+      log.info(`Updated ${outputFile} - marked ${url} as visited`);
     }
   },
   maxRequestsPerCrawl: 1,
@@ -63,14 +64,33 @@ const crawler = new PlaywrightCrawler({
 log.setLevel(LogLevel.INFO);
 
 (async () => {
-  const linksFileExists = await fs
-    .access(outputFile)
-    .then(() => true)
-    .catch(() => false);
+  try {
+    const linksFileExists = await fs
+      .access(outputFile)
+      .then(() => true)
+      .catch(() => false);
 
-  if (!linksFileExists) {
-    await crawler.run([startUrl]);
-  } else {
-    log.info(`${outputFile} already exists. Skipping crawl.`);
+    if (linksFileExists) {
+      const links: LinkData[] = JSON.parse(
+        await fs.readFile(outputFile, "utf-8"),
+      );
+      const nextUnvisitedLink = links.find((link) => !link.visited);
+
+      if (nextUnvisitedLink) {
+        log.info(
+          `Crawling next unvisited link: ${nextUnvisitedLink.parsedUrl}`,
+        );
+        await crawler.run([nextUnvisitedLink.parsedUrl]);
+      } else {
+        log.info("All links have been visited.");
+      }
+    } else {
+      log.info(`${outputFile} does not exist. Starting initial crawl.`);
+      await crawler.run([startUrl]);
+    }
+  } catch (error) {
+    log.error("An error occurred:", {
+      error: error instanceof Error ? error.message : String(error),
+    });
   }
 })();
