@@ -1,17 +1,15 @@
-import { PlaywrightCrawler, LogLevel } from "crawlee";
+import { PlaywrightCrawler } from "crawlee";
 import { enhancedLog } from "./utils/logging.js";
-import {
-  getNextUnvisitedLink,
-} from "./utils/linkManagement.js";
+import { getNextUnvisitedLink } from "./utils/linkManagement.js";
 import { handleRequest } from "./crawlerHandlers.js";
 
 const crawler = new PlaywrightCrawler({
   async requestHandler({ request, page, log }) {
     await handleRequest({ request, page, log });
-    await page.waitForTimeout(30000);
+    await page.waitForTimeout(1);
   },
   maxRequestsPerCrawl: 1,
-  headless: false,
+  headless: true,
   maxConcurrency: 1,
   navigationTimeoutSecs: 3 * 60,
   requestHandlerTimeoutSecs: 3 * 60,
