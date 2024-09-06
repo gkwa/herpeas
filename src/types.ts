@@ -3,4 +3,3 @@ export interface LinkData {
   parsedUrl: string;
   visited: boolean;
 }
-

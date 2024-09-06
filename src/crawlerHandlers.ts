@@ -1,5 +1,5 @@
-import { Page, Request } from "playwright";
-import { Log } from "crawlee";
+import { Page } from "playwright";
+import { Log, Request as CrawleeRequest } from "crawlee";
 import { enhancedLog } from "./utils/logging.js";
 import { saveLinksToFile } from "./utils/fileOperations.js";
 import { updateMainLinksFile } from "./utils/linkManagement.js";
@@ -10,11 +10,11 @@ export async function handleRequest({
   request,
   page,
 }: {
-  request: Request;
+  request: CrawleeRequest;
   page: Page;
   log: Log;
 }) {
-  const url = request.loadedUrl || request.url;
+  const url = request.url;
   if (await hasBeenCrawled(url)) {
     enhancedLog("info", `${url} has already been crawled. Skipping.`);
     return;
