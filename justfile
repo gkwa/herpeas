@@ -6,3 +6,6 @@ default:
 format:
     npx prettier --write .
     just --unstable --fmt
+
+run:
+    npm start
