@@ -59,6 +59,39 @@ const crawler = new PlaywrightCrawler({
     const title = await page.title();
     log.info(`Title of ${url} is '${title}'`);
 
+    // Wait for the dynamic content to be loaded
+    await page.waitForFunction(
+      () => {
+        const controlsSection = document.getElementById("controls_section");
+        return (
+          controlsSection &&
+          controlsSection.innerHTML.includes("show all images")
+        );
+      },
+      { timeout: 10000 },
+    );
+
+    // Click the "show all images" link to expand the list of links
+    try {
+      await page.evaluate(() => {
+        const link = document.querySelector(
+          'a[onclick*="show_full_size_images"]',
+        );
+        if (link) {
+          (link as HTMLAnchorElement).click();
+        } else {
+          throw new Error("Link not found");
+        }
+      });
+      log.info('Clicked "show all images" link');
+      // Wait for the new links to load
+      await page.waitForLoadState("networkidle");
+    } catch (error) {
+      log.info(
+        'Could not find or click "show all images" link. Proceeding with visible links.',
+      );
+    }
+
     const links: LinkData[] = await page.evaluate(() => {
       const linkElements = document.querySelectorAll('a[href*="go.php?ID="]');
       return Array.from(linkElements).map((el) => {
