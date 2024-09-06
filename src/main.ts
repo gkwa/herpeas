@@ -18,6 +18,7 @@ const crawler = new PlaywrightCrawler({
   },
   maxRequestsPerCrawl: 20,
   headless: false, // Set to false to show the browser
+  maxConcurrency: 1,
 });
 
 log.setLevel(LogLevel.INFO);
