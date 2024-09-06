@@ -1,11 +1,14 @@
 import { PlaywrightCrawler, LogLevel, log } from "crawlee";
+import fs from "fs/promises";
 
 interface LinkData {
   originalLink: string;
   parsedUrl: string;
+  visited: boolean;
 }
 
 const startUrl = process.env.START_URL || "https://crawlee.dev";
+const outputFile = "links.json";
 
 const crawler = new PlaywrightCrawler({
   async requestHandler({ request, page, log }) {
@@ -20,6 +23,7 @@ const crawler = new PlaywrightCrawler({
         return {
           originalLink: href || "",
           parsedUrl: match ? decodeURIComponent(match[1]) : "",
+          visited: false,
         };
       });
     });
@@ -31,10 +35,15 @@ const crawler = new PlaywrightCrawler({
     });
 
     log.info(`Total links found: ${links.length}`);
+
+    await fs.writeFile(outputFile, JSON.stringify(links, null, 2));
+    log.info(`Links written to ${outputFile}`);
   },
   maxRequestsPerCrawl: 1,
-  headless: false,
+  headless: true,
   maxConcurrency: 1,
+  navigationTimeoutSecs: 3*60, // Increase timeout in seconds
+  requestHandlerTimeoutSecs: 3*60, // Increase request handler timeout
 });
 
 log.setLevel(LogLevel.INFO);
