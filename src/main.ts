@@ -22,8 +22,11 @@ const crawler = new PlaywrightCrawler({
         await requestQueue.addRequest({ url: link });
     }
   },
-  maxRequestsPerCrawl: 20,
   headless: true,
+  maxRequestsPerCrawl: 1,
+  maxConcurrency: 1,
+  navigationTimeoutSecs: 3 * 60,
+  requestHandlerTimeoutSecs: 3 * 60,
 });
 
 log.setLevel(LogLevel.INFO);
