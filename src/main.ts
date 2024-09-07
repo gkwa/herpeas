@@ -1,25 +1,31 @@
-import { PlaywrightCrawler, LogLevel, log } from "crawlee";
+import { PlaywrightCrawler, LogLevel, log, RequestQueue } from "crawlee";
 
 const startUrl = process.env.START_URL || "https://crawlee.dev";
 
-const crawler = new PlaywrightCrawler({
-  async requestHandler({ request, page, enqueueLinks, log, pushData }) {
-    const title = await page.title();
-    log.info(`Title of ${request.loadedUrl} is '${title}'`);
-    await pushData({ title, url: request.loadedUrl });
+const requestQueue = await RequestQueue.open();
+await requestQueue.addRequest({ url: startUrl });
 
-    await enqueueLinks({
-      strategy: "same-domain",
-      transformRequestFunction: (req) => {
-        log.info(`Enqueueing: ${req.url}`);
-        return req;
-      },
-    });
+const crawler = new PlaywrightCrawler({
+  requestQueue,
+  async requestHandler({ request, page, log, pushData }) {
+    console.log(`Visiting: ${request.url}`);
+
+    const title = await page.title();
+    log.info(`Title of "${request.url}" is '${title}'`);
+    await pushData({ title, url: request.url });
+
+    const links = await page.$$eval("a", (elements) =>
+      elements.map((el) => el.href),
+    );
+    for (const link of links) {
+        log.info(`Enqueueing: ${link}`);
+        await requestQueue.addRequest({ url: link });
+    }
   },
   maxRequestsPerCrawl: 20,
-  headless: true, // Set to false to show the browser
+  headless: true,
 });
 
 log.setLevel(LogLevel.INFO);
 
-await crawler.run([startUrl]);
+await crawler.run();
