@@ -1,40 +1,34 @@
-import { PlaywrightCrawler, RequestQueue } from 'crawlee';
-import { addLink } from './database.js';
+import { PlaywrightCrawler, RequestQueue } from "crawlee";
+import { insertLink } from "./database.js";
 
-export async function createCrawler(requestQueue: RequestQueue) {
+export function createCrawler(
+  requestQueue: RequestQueue,
+  allowedDomains?: string[],
+) {
   return new PlaywrightCrawler({
     requestQueue,
-    async requestHandler({ request, page, log, pushData }) {
-      console.log(`Visiting: ${request.url}`);
+    async requestHandler({ request, page, enqueueLinks, log }) {
       const title = await page.title();
-      log.info(`Title of "${request.url}" is '${title}'`);
+      log.info(`Title of ${request.url}: ${title}`);
+      await insertLink(request.url, title);
 
-      await addLink(request.url, title);
-      await pushData({ title, url: request.url });
-
-      const links = await page.$$eval('a, img', (elements) =>
-        elements
-          .map((el) => {
-            if (el instanceof HTMLImageElement) {
-              return el.src;
-            } else if (el instanceof HTMLAnchorElement) {
-              return el.href;
-            }
-            return null;
-          })
-          .filter((url): url is string => url !== null)
-      );
-
-      for (const link of links) {
-        log.info(`Enqueueing: ${link}`);
-        await requestQueue.addRequest({ url: link });
-        await addLink(link, '');
-      }
+      await enqueueLinks({
+        globs: allowedDomains
+          ? allowedDomains.flatMap((domain) => [
+              `http://${domain}/**`,
+              `https://${domain}/**`,
+            ])
+          : undefined,
+        transformRequestFunction(req) {
+          if (
+            allowedDomains &&
+            !allowedDomains.some((domain) => req.url.includes(domain))
+          ) {
+            return false;
+          }
+          return req;
+        },
+      });
     },
-    headless: true,
-    maxRequestsPerCrawl: 9999,
-    maxConcurrency: 5,
-    navigationTimeoutSecs: 3 * 60,
-    requestHandlerTimeoutSecs: 3 * 60,
   });
 }
