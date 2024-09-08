@@ -9,3 +9,6 @@ format:
 
 run:
     npm start
+
+clean:
+    rm -rf storage
