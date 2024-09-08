@@ -11,17 +11,17 @@ export async function openDatabase() {
 export async function setupDatabase() {
   const db = await openDatabase();
   await db.exec(`
-    CREATE TABLE IF NOT EXISTS links (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      url TEXT NOT NULL UNIQUE,
-      title TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-  `);
+   CREATE TABLE IF NOT EXISTS links (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     url TEXT NOT NULL UNIQUE,
+     title TEXT,
+     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+   )
+ `);
   await db.close();
 }
 
-export async function insertLink(url: string, title: string) {
+export async function addLink(url: string, title: string) {
   const db = await openDatabase();
   await db.run("INSERT OR IGNORE INTO links (url, title) VALUES (?, ?)", [
     url,

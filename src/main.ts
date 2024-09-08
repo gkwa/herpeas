@@ -1,16 +1,16 @@
 import { LogLevel, log, RequestQueue } from "crawlee";
 import { setupDatabase } from "./database.js";
 import { createCrawler } from "./crawler.js";
-import { parseArguments } from "./cli.js";
+
+const startUrl = process.env.START_URL || "https://crawlee.dev";
 
 async function main() {
-  const { startUrl, domains } = parseArguments();
-
   await setupDatabase();
+
   const requestQueue = await RequestQueue.open();
   await requestQueue.addRequest({ url: startUrl });
 
-  const crawler = await createCrawler(requestQueue, domains);
+  const crawler = await createCrawler(requestQueue);
 
   log.setLevel(LogLevel.INFO);
   await crawler.run();
