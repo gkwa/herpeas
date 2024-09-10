@@ -7,8 +7,8 @@ format:
     npx prettier --write .
     just --unstable --fmt
 
-run:
-    npm start
+run *URLS:
+    START_URLS='{{ URLS }}' npm start
 
 clean:
     rm -rf storage
