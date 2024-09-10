@@ -17,7 +17,7 @@ export async function createCrawler() {
     },
     headless: true,
     maxRequestsPerCrawl: 9999,
-    maxConcurrency: 5,
+    maxConcurrency: 20,
     navigationTimeoutSecs: 3 * 60,
     requestHandlerTimeoutSecs: 3 * 60,
   });
