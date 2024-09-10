@@ -7,6 +7,13 @@ const startUrls = process.env.START_URLS
   : ["https://crawlee.dev"];
 
 async function main() {
+  // Log the list of URLs we'll be visiting
+  console.log("Starting crawl with the following URLs:");
+  startUrls.forEach((url, index) => {
+    console.log(`${index + 1}. ${url}`);
+  });
+  console.log(""); // Add a blank line for better readability
+
   await setupDatabase();
 
   const crawler = await createCrawler();
