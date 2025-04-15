@@ -22,10 +22,10 @@ importers:
         version: 5.1.7
     devDependencies:
       '@apify/tsconfig':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       '@types/node':
-        specifier: ^22.14.1
+        specifier: ^22.0.0
         version: 22.14.1
       tsx:
         specifier: ^4.4.0
@@ -56,8 +56,8 @@ packages:
   '@apify/timeout@0.3.2':
     resolution: {integrity: sha512-JnOLIOpqfm366q7opKrA6HrL0iYRpYYDn8Mi77sMR2GZ1fPbwMWCVzN23LJWfJV7izetZbCMrqRUXsR1etZ7dA==}
 
-  '@apify/tsconfig@0.1.0':
-    resolution: {integrity: sha512-ba9Y6AMocRucO3AVTb6GM2V+oy1wByNlCDzamK+IC+aqU3pCgJwSN87uNu6iEgu+uetsqYvVbXJYakwiQO1LGA==}
+  '@apify/tsconfig@0.1.1':
+    resolution: {integrity: sha512-cS7mwN2UW1UXcluGXRDHH0Vr2VsSLkw2DwLTwoSBkcJSe8fvCr3MPryTSq0uod4MashpMURxJ7CsLKxs82VmOQ==}
 
   '@apify/utilities@2.15.3':
     resolution: {integrity: sha512-jCyZ3ZhosjHSnaPND6l9/gPp0y+bH3G+Gz+/eIFRMXE418T9me0X828Ua2sCROcj/TrNg+1DZbdE3GWqOMdyuw==}
@@ -1783,7 +1783,7 @@ snapshots:
 
   '@apify/timeout@0.3.2': {}
 
-  '@apify/tsconfig@0.1.0': {}
+  '@apify/tsconfig@0.1.1': {}
 
   '@apify/utilities@2.15.3':
     dependencies:
