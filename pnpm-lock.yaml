@@ -10,7 +10,7 @@ importers:
     dependencies:
       crawlee:
         specifier: ^3.0.0
-        version: 3.15.1(@types/node@22.18.7)(playwright@1.55.1)
+        version: 3.15.1(@types/node@22.18.8)(playwright@1.55.1)
       playwright:
         specifier: '*'
         version: 1.55.1
@@ -25,13 +25,13 @@ importers:
         specifier: ^0.1.0
         version: 0.1.1
       '@types/node':
-        specifier: ^22.0.0
-        version: 22.18.7
+        specifier: ^22.18.8
+        version: 22.18.8
       tsx:
         specifier: ^4.4.0
         version: 4.20.6
       typescript:
-        specifier: ^5.9.3
+        specifier: ~5.9.0
         version: 5.9.3
 
 packages:
@@ -410,8 +410,8 @@ packages:
   '@types/jsdom@21.1.7':
     resolution: {integrity: sha512-yOriVnggzrnQ3a9OKOCxaVuSug3w3/SbOj5i7VwXWZEyUNl3bLF9V3MfxGbZKuwqJOQyRfqXyROBB1CoZLFWzA==}
 
-  '@types/node@22.18.7':
-    resolution: {integrity: sha512-3E97nlWEVp2V6J7aMkR8eOnw/w0pArPwf/5/W0865f+xzBoGL/ZuHkTAKAGN7cOWNwd+sG+hZOqj+fjzeHS75g==}
+  '@types/node@22.18.8':
+    resolution: {integrity: sha512-pAZSHMiagDR7cARo/cch1f3rXy0AEXwsVsVH09FcyeJVAzCnGgmYis7P3JidtTUjyadhTeSo8TgRPswstghDaw==}
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
@@ -1829,12 +1829,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@crawlee/cli@3.15.1(@types/node@22.18.7)':
+  '@crawlee/cli@3.15.1(@types/node@22.18.8)':
     dependencies:
-      '@crawlee/templates': 3.15.1(@types/node@22.18.7)
+      '@crawlee/templates': 3.15.1(@types/node@22.18.8)
       ansi-colors: 4.1.3
       fs-extra: 11.3.2
-      inquirer: 8.2.7(@types/node@22.18.7)
+      inquirer: 8.2.7(@types/node@22.18.8)
       tslib: 2.8.1
       yargonaut: 1.1.4
       yargs: 17.7.2
@@ -1974,10 +1974,10 @@ snapshots:
       - playwright
       - supports-color
 
-  '@crawlee/templates@3.15.1(@types/node@22.18.7)':
+  '@crawlee/templates@3.15.1(@types/node@22.18.8)':
     dependencies:
       ansi-colors: 4.1.3
-      inquirer: 9.3.8(@types/node@22.18.7)
+      inquirer: 9.3.8(@types/node@22.18.8)
       tslib: 2.8.1
       yargonaut: 1.1.4
       yargs: 17.7.2
@@ -2106,12 +2106,12 @@ snapshots:
   '@gar/promisify@1.1.3':
     optional: true
 
-  '@inquirer/external-editor@1.0.2(@types/node@22.18.7)':
+  '@inquirer/external-editor@1.0.2(@types/node@22.18.8)':
     dependencies:
       chardet: 2.1.0
       iconv-lite: 0.7.0
     optionalDependencies:
-      '@types/node': 22.18.7
+      '@types/node': 22.18.8
 
   '@inquirer/figures@1.0.13': {}
 
@@ -2165,17 +2165,17 @@ snapshots:
 
   '@types/jsdom@21.1.7':
     dependencies:
-      '@types/node': 22.18.7
+      '@types/node': 22.18.8
       '@types/tough-cookie': 4.0.5
       parse5: 7.3.0
 
-  '@types/node@22.18.7':
+  '@types/node@22.18.8':
     dependencies:
       undici-types: 6.21.0
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 22.18.7
+      '@types/node': 22.18.8
 
   '@types/tough-cookie@4.0.5': {}
 
@@ -2392,13 +2392,13 @@ snapshots:
 
   content-type@1.0.5: {}
 
-  crawlee@3.15.1(@types/node@22.18.7)(playwright@1.55.1):
+  crawlee@3.15.1(@types/node@22.18.8)(playwright@1.55.1):
     dependencies:
       '@crawlee/basic': 3.15.1
       '@crawlee/browser': 3.15.1(playwright@1.55.1)
       '@crawlee/browser-pool': 3.15.1(playwright@1.55.1)
       '@crawlee/cheerio': 3.15.1
-      '@crawlee/cli': 3.15.1(@types/node@22.18.7)
+      '@crawlee/cli': 3.15.1(@types/node@22.18.8)
       '@crawlee/core': 3.15.1
       '@crawlee/http': 3.15.1
       '@crawlee/jsdom': 3.15.1
@@ -2824,9 +2824,9 @@ snapshots:
 
   ini@1.3.8: {}
 
-  inquirer@8.2.7(@types/node@22.18.7):
+  inquirer@8.2.7(@types/node@22.18.8):
     dependencies:
-      '@inquirer/external-editor': 1.0.2(@types/node@22.18.7)
+      '@inquirer/external-editor': 1.0.2(@types/node@22.18.8)
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       cli-cursor: 3.1.0
@@ -2844,9 +2844,9 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  inquirer@9.3.8(@types/node@22.18.7):
+  inquirer@9.3.8(@types/node@22.18.8):
     dependencies:
-      '@inquirer/external-editor': 1.0.2(@types/node@22.18.7)
+      '@inquirer/external-editor': 1.0.2(@types/node@22.18.8)
       '@inquirer/figures': 1.0.13
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
