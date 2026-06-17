@@ -12,7 +12,7 @@ importers:
         specifier: ^3.0.0
         version: 3.17.0(@types/node@24.13.2)(playwright@1.61.0)
       playwright:
-        specifier: ^1.61.0
+        specifier: '*'
         version: 1.61.0
       sqlite:
         specifier: ^5.0.1
@@ -22,8 +22,8 @@ importers:
         version: 6.0.1
     devDependencies:
       '@apify/tsconfig':
-        specifier: ^0.1.0
-        version: 0.1.2
+        specifier: ^0.2.0
+        version: 0.2.0
       '@types/node':
         specifier: ^24.0.0
         version: 24.13.2
@@ -56,8 +56,8 @@ packages:
   '@apify/timeout@0.3.5':
     resolution: {integrity: sha512-3nuQXwxh2sKxBo5tgDoZWuZHiSpqrKg1+sJHjFSk8blhyX6I2FZzpfW7UaCELeYLZiSjWUPh2rXNrc3zLmJGJg==}
 
-  '@apify/tsconfig@0.1.2':
-    resolution: {integrity: sha512-9dzEI1ZQ5+iM0k0fmPJrpdSSPUolVdeI1nDGFZMjD9UabTmIvjQrzui+1a25uy913AUEBrKTojEPj87pU9/Ekg==}
+  '@apify/tsconfig@0.2.0':
+    resolution: {integrity: sha512-0i6rF+hgXw6mQXhENYNTnP+Yo4WY38d698k/pk4rIpdCx/sSuEprR2N5WdtMaN628vCB+aZjff0jPN2EnQYtjQ==}
 
   '@apify/utilities@2.32.2':
     resolution: {integrity: sha512-2K2FBE7Ov8AdzAyEC9CR2ZeA7tSA8Dc6OUO42l9kIWgY2J2pO9rDTndyFwOQ+dWMUJKEyhk1/GKF+Ick/VFoMg==}
@@ -1659,7 +1659,7 @@ snapshots:
 
   '@apify/timeout@0.3.5': {}
 
-  '@apify/tsconfig@0.1.2': {}
+  '@apify/tsconfig@0.2.0': {}
 
   '@apify/utilities@2.32.2':
     dependencies:
