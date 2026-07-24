@@ -10,16 +10,16 @@ importers:
     dependencies:
       crawlee:
         specifier: ^3.0.0
-        version: 3.17.0(@types/node@24.13.3)(playwright@1.61.1)
+        version: 3.17.0(@types/node@24.13.3)(playwright@1.62.0)(supports-color@7.2.0)
       playwright:
-        specifier: '*'
-        version: 1.61.1
+        specifier: ^1.62.0
+        version: 1.62.0
       sqlite:
         specifier: ^5.0.1
         version: 5.1.1
       sqlite3:
         specifier: ^6.0.0
-        version: 6.0.1
+        version: 6.0.1(supports-color@7.2.0)
     devDependencies:
       '@apify/tsconfig':
         specifier: ^0.2.0
@@ -28,7 +28,7 @@ importers:
         specifier: ^24.0.0
         version: 24.13.3
       tsx:
-        specifier: ^4.23.1
+        specifier: ^4.4.0
         version: 4.23.1
       typescript:
         specifier: ~7.0.0
@@ -1355,14 +1355,14 @@ packages:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
 
-  playwright-core@1.61.1:
-    resolution: {integrity: sha512-h7Qlt6m4REp25qvIdvbDtVmD4LqVXfpRxhORv9L0jzETM05p4fuPJ3dKyuSXQxDSbXnmS79HAgi9589lGSpLkg==}
-    engines: {node: '>=18'}
+  playwright-core@1.62.0:
+    resolution: {integrity: sha512-nsNRyq0r2zsG8AcRHWknc9QRA5XCueC7gWMrs+Gx2tlZn9hcl8zudfh00lhJPY1DE7NmZ6bDsT9g2yey8mXljA==}
+    engines: {node: '>=20'}
     hasBin: true
 
-  playwright@1.61.1:
-    resolution: {integrity: sha512-DWnY5o3YbLWK4GovuAVwpqL+1VwGNdUGrRr++8j8PtQQzvAVZUIMjKQ90fY689sEJZJBbZVw1rXaOKSTitkzPQ==}
-    engines: {node: '>=18'}
+  playwright@1.62.0:
+    resolution: {integrity: sha512-Z14dG305dgaLu6foB1TXQagFiW8JfSUIUaUuPaKQ6NtBPKF1P/qXcqfh6c6K/icPqdy37JmjbiBXf6JNg6Sylw==}
+    engines: {node: '>=20'}
     hasBin: true
 
   prebuild-install@7.1.3:
@@ -1796,14 +1796,14 @@ snapshots:
 
   '@borewit/text-codec@0.2.2': {}
 
-  '@crawlee/basic@3.17.0':
+  '@crawlee/basic@3.17.0(supports-color@7.2.0)':
     dependencies:
       '@apify/log': 2.5.41
       '@apify/timeout': 0.3.5
       '@apify/utilities': 2.32.2
-      '@crawlee/core': 3.17.0
+      '@crawlee/core': 3.17.0(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
-      '@crawlee/utils': 3.17.0
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       csv-stringify: 6.7.0
       fs-extra: 11.3.5
       got-scraping: 4.2.1
@@ -1814,47 +1814,47 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@crawlee/browser-pool@3.17.0(playwright@1.61.1)':
+  '@crawlee/browser-pool@3.17.0(playwright@1.62.0)(supports-color@7.2.0)':
     dependencies:
       '@apify/log': 2.5.41
       '@apify/timeout': 0.3.5
-      '@crawlee/core': 3.17.0
+      '@crawlee/core': 3.17.0(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
       fingerprint-generator: 2.1.82
-      fingerprint-injector: 2.1.82(playwright@1.61.1)
+      fingerprint-injector: 2.1.82(playwright@1.62.0)
       lodash.merge: 4.6.2
       nanoid: 3.3.12
       ow: 0.28.2
       p-limit: 3.1.0
-      proxy-chain: 2.7.1
+      proxy-chain: 2.7.1(supports-color@7.2.0)
       quick-lru: 5.1.1
       tiny-typed-emitter: 2.1.0
       tslib: 2.8.1
     optionalDependencies:
-      playwright: 1.61.1
+      playwright: 1.62.0
     transitivePeerDependencies:
       - supports-color
 
-  '@crawlee/browser@3.17.0(playwright@1.61.1)':
+  '@crawlee/browser@3.17.0(playwright@1.62.0)(supports-color@7.2.0)':
     dependencies:
       '@apify/timeout': 0.3.5
-      '@crawlee/basic': 3.17.0
-      '@crawlee/browser-pool': 3.17.0(playwright@1.61.1)
+      '@crawlee/basic': 3.17.0(supports-color@7.2.0)
+      '@crawlee/browser-pool': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
-      '@crawlee/utils': 3.17.0
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       ow: 0.28.2
       tslib: 2.8.1
       type-fest: 4.41.0
     optionalDependencies:
-      playwright: 1.61.1
+      playwright: 1.62.0
     transitivePeerDependencies:
       - supports-color
 
-  '@crawlee/cheerio@3.17.0':
+  '@crawlee/cheerio@3.17.0(supports-color@7.2.0)':
     dependencies:
-      '@crawlee/http': 3.17.0
+      '@crawlee/http': 3.17.0(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
-      '@crawlee/utils': 3.17.0
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       cheerio: 1.0.0-rc.12
       htmlparser2: 9.1.0
       tslib: 2.8.1
@@ -1873,7 +1873,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@crawlee/core@3.17.0':
+  '@crawlee/core@3.17.0(supports-color@7.2.0)':
     dependencies:
       '@apify/consts': 2.53.3
       '@apify/datastructures': 2.0.6
@@ -1883,7 +1883,7 @@ snapshots:
       '@apify/utilities': 2.32.2
       '@crawlee/memory-storage': 3.17.0
       '@crawlee/types': 3.17.0
-      '@crawlee/utils': 3.17.0
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       '@sapphire/async-queue': 1.5.5
       '@vladfrangu/async_event_emitter': 2.4.7
       csv-stringify: 6.7.0
@@ -1900,13 +1900,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@crawlee/http@3.17.0':
+  '@crawlee/http@3.17.0(supports-color@7.2.0)':
     dependencies:
       '@apify/timeout': 0.3.5
       '@apify/utilities': 2.32.2
-      '@crawlee/basic': 3.17.0
+      '@crawlee/basic': 3.17.0(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
-      '@crawlee/utils': 3.17.0
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       '@types/content-type': 1.1.9
       cheerio: 1.0.0-rc.12
       content-type: 1.0.5
@@ -1919,16 +1919,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@crawlee/jsdom@3.17.0':
+  '@crawlee/jsdom@3.17.0(supports-color@7.2.0)':
     dependencies:
       '@apify/timeout': 0.3.5
       '@apify/utilities': 2.32.2
-      '@crawlee/http': 3.17.0
+      '@crawlee/http': 3.17.0(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
-      '@crawlee/utils': 3.17.0
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       '@types/jsdom': 21.1.7
       cheerio: 1.0.0-rc.12
-      jsdom: 26.1.0
+      jsdom: 26.1.0(supports-color@7.2.0)
       ow: 0.28.2
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -1937,11 +1937,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@crawlee/linkedom@3.17.0':
+  '@crawlee/linkedom@3.17.0(supports-color@7.2.0)':
     dependencies:
       '@apify/timeout': 0.3.5
       '@apify/utilities': 2.32.2
-      '@crawlee/http': 3.17.0
+      '@crawlee/http': 3.17.0(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
       linkedom: 0.18.12
       ow: 0.28.2
@@ -1964,16 +1964,16 @@ snapshots:
       proper-lockfile: 4.1.2
       tslib: 2.8.1
 
-  '@crawlee/playwright@3.17.0(playwright@1.61.1)':
+  '@crawlee/playwright@3.17.0(playwright@1.62.0)(supports-color@7.2.0)':
     dependencies:
       '@apify/datastructures': 2.0.6
       '@apify/log': 2.5.41
       '@apify/timeout': 0.3.5
-      '@crawlee/browser': 3.17.0(playwright@1.61.1)
-      '@crawlee/browser-pool': 3.17.0(playwright@1.61.1)
-      '@crawlee/core': 3.17.0
+      '@crawlee/browser': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
+      '@crawlee/browser-pool': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
+      '@crawlee/core': 3.17.0(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
-      '@crawlee/utils': 3.17.0
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       cheerio: 1.0.0-rc.12
       jquery: 3.7.1
       lodash.isequal: 4.5.0
@@ -1983,19 +1983,19 @@ snapshots:
       string-comparison: 1.3.0
       tslib: 2.8.1
     optionalDependencies:
-      playwright: 1.61.1
+      playwright: 1.62.0
     transitivePeerDependencies:
       - puppeteer
       - supports-color
 
-  '@crawlee/puppeteer@3.17.0(playwright@1.61.1)':
+  '@crawlee/puppeteer@3.17.0(playwright@1.62.0)(supports-color@7.2.0)':
     dependencies:
       '@apify/datastructures': 2.0.6
       '@apify/log': 2.5.41
-      '@crawlee/browser': 3.17.0(playwright@1.61.1)
-      '@crawlee/browser-pool': 3.17.0(playwright@1.61.1)
+      '@crawlee/browser': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
+      '@crawlee/browser-pool': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
       '@crawlee/types': 3.17.0
-      '@crawlee/utils': 3.17.0
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       cheerio: 1.0.0-rc.12
       devtools-protocol: 0.0.1642743
       jquery: 3.7.1
@@ -2019,14 +2019,14 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@crawlee/utils@3.17.0':
+  '@crawlee/utils@3.17.0(supports-color@7.2.0)':
     dependencies:
       '@apify/log': 2.5.41
       '@apify/ps-tree': 1.2.0
       '@crawlee/types': 3.17.0
       '@types/sax': 1.2.7
       cheerio: 1.0.0-rc.12
-      file-type: 21.3.4
+      file-type: 21.3.4(supports-color@7.2.0)
       got-scraping: 4.2.1
       ow: 0.28.2
       robots-parser: 3.0.1
@@ -2152,13 +2152,13 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@npmcli/agent@4.0.2':
+  '@npmcli/agent@4.0.2(supports-color@7.2.0)':
     dependencies:
       agent-base: 7.1.4
-      http-proxy-agent: 7.0.2
-      https-proxy-agent: 7.0.6
+      http-proxy-agent: 7.0.2(supports-color@7.2.0)
+      https-proxy-agent: 7.0.6(supports-color@7.2.0)
       lru-cache: 11.5.1
-      socks-proxy-agent: 8.0.5
+      socks-proxy-agent: 8.0.5(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
     optional: true
@@ -2186,9 +2186,9 @@ snapshots:
 
   '@sindresorhus/is@7.2.0': {}
 
-  '@tokenizer/inflate@0.4.1':
+  '@tokenizer/inflate@0.4.1(supports-color@7.2.0)':
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       token-types: 6.1.2
     transitivePeerDependencies:
       - supports-color
@@ -2447,24 +2447,24 @@ snapshots:
 
   content-type@1.0.5: {}
 
-  crawlee@3.17.0(@types/node@24.13.3)(playwright@1.61.1):
+  crawlee@3.17.0(@types/node@24.13.3)(playwright@1.62.0)(supports-color@7.2.0):
     dependencies:
-      '@crawlee/basic': 3.17.0
-      '@crawlee/browser': 3.17.0(playwright@1.61.1)
-      '@crawlee/browser-pool': 3.17.0(playwright@1.61.1)
-      '@crawlee/cheerio': 3.17.0
+      '@crawlee/basic': 3.17.0(supports-color@7.2.0)
+      '@crawlee/browser': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
+      '@crawlee/browser-pool': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
+      '@crawlee/cheerio': 3.17.0(supports-color@7.2.0)
       '@crawlee/cli': 3.17.0(@types/node@24.13.3)
-      '@crawlee/core': 3.17.0
-      '@crawlee/http': 3.17.0
-      '@crawlee/jsdom': 3.17.0
-      '@crawlee/linkedom': 3.17.0
-      '@crawlee/playwright': 3.17.0(playwright@1.61.1)
-      '@crawlee/puppeteer': 3.17.0(playwright@1.61.1)
-      '@crawlee/utils': 3.17.0
+      '@crawlee/core': 3.17.0(supports-color@7.2.0)
+      '@crawlee/http': 3.17.0(supports-color@7.2.0)
+      '@crawlee/jsdom': 3.17.0(supports-color@7.2.0)
+      '@crawlee/linkedom': 3.17.0(supports-color@7.2.0)
+      '@crawlee/playwright': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
+      '@crawlee/puppeteer': 3.17.0(playwright@1.62.0)(supports-color@7.2.0)
+      '@crawlee/utils': 3.17.0(supports-color@7.2.0)
       import-local: 3.2.0
       tslib: 2.8.1
     optionalDependencies:
-      playwright: 1.61.1
+      playwright: 1.62.0
     transitivePeerDependencies:
       - '@types/node'
       - bufferutil
@@ -2496,9 +2496,11 @@ snapshots:
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.2.0
 
-  debug@4.4.3:
+  debug@4.4.3(supports-color@7.2.0):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 7.2.0
 
   decimal.js@10.6.0: {}
 
@@ -2628,9 +2630,9 @@ snapshots:
     dependencies:
       escape-string-regexp: 1.0.5
 
-  file-type@21.3.4:
+  file-type@21.3.4(supports-color@7.2.0):
     dependencies:
-      '@tokenizer/inflate': 0.4.1
+      '@tokenizer/inflate': 0.4.1(supports-color@7.2.0)
       strtok3: 10.3.5
       token-types: 6.1.2
       uint8array-extras: 1.5.0
@@ -2650,12 +2652,12 @@ snapshots:
       header-generator: 2.1.82
       tslib: 2.8.1
 
-  fingerprint-injector@2.1.82(playwright@1.61.1):
+  fingerprint-injector@2.1.82(playwright@1.62.0):
     dependencies:
       fingerprint-generator: 2.1.82
       tslib: 2.8.1
     optionalDependencies:
-      playwright: 1.61.1
+      playwright: 1.62.0
 
   form-data-encoder@4.1.0: {}
 
@@ -2770,10 +2772,10 @@ snapshots:
 
   http-cache-semantics@4.2.0: {}
 
-  http-proxy-agent@7.0.2:
+  http-proxy-agent@7.0.2(supports-color@7.2.0):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -2782,10 +2784,10 @@ snapshots:
       quick-lru: 5.1.1
       resolve-alpn: 1.2.1
 
-  https-proxy-agent@7.0.6:
+  https-proxy-agent@7.0.6(supports-color@7.2.0):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -2866,14 +2868,14 @@ snapshots:
 
   jquery@3.7.1: {}
 
-  jsdom@26.1.0:
+  jsdom@26.1.0(supports-color@7.2.0):
     dependencies:
       cssstyle: 4.6.0
       data-urls: 5.0.0
       decimal.js: 10.6.0
       html-encoding-sniffer: 4.0.0
-      http-proxy-agent: 7.0.2
-      https-proxy-agent: 7.0.6
+      http-proxy-agent: 7.0.2(supports-color@7.2.0)
+      https-proxy-agent: 7.0.6(supports-color@7.2.0)
       is-potential-custom-element-name: 1.0.1
       nwsapi: 2.2.23
       parse5: 7.3.0
@@ -2935,10 +2937,10 @@ snapshots:
   lru-cache@11.5.1:
     optional: true
 
-  make-fetch-happen@15.0.6:
+  make-fetch-happen@15.0.6(supports-color@7.2.0):
     dependencies:
       '@gar/promise-retry': 1.0.3
-      '@npmcli/agent': 4.0.2
+      '@npmcli/agent': 4.0.2(supports-color@7.2.0)
       '@npmcli/redact': 4.0.0
       cacache: 20.0.4
       http-cache-semantics: 4.2.0
@@ -3062,12 +3064,12 @@ snapshots:
 
   node-addon-api@8.6.0: {}
 
-  node-gyp@12.2.0:
+  node-gyp@12.2.0(supports-color@7.2.0):
     dependencies:
       env-paths: 2.2.1
       exponential-backoff: 3.1.3
       graceful-fs: 4.2.11
-      make-fetch-happen: 15.0.6
+      make-fetch-happen: 15.0.6(supports-color@7.2.0)
       nopt: 9.0.0
       proc-log: 6.1.0
       semver: 7.8.5
@@ -3180,11 +3182,11 @@ snapshots:
     dependencies:
       find-up: 4.1.0
 
-  playwright-core@1.61.1: {}
+  playwright-core@1.62.0: {}
 
-  playwright@1.61.1:
+  playwright@1.62.0:
     dependencies:
-      playwright-core: 1.61.1
+      playwright-core: 1.62.0
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -3212,10 +3214,10 @@ snapshots:
       retry: 0.12.0
       signal-exit: 3.0.7
 
-  proxy-chain@2.7.1:
+  proxy-chain@2.7.1(supports-color@7.2.0):
     dependencies:
       socks: 2.8.9
-      socks-proxy-agent: 8.0.5
+      socks-proxy-agent: 8.0.5(supports-color@7.2.0)
       tslib: 2.8.1
     transitivePeerDependencies:
       - supports-color
@@ -3304,10 +3306,10 @@ snapshots:
 
   smart-buffer@4.2.0: {}
 
-  socks-proxy-agent@8.0.5:
+  socks-proxy-agent@8.0.5(supports-color@7.2.0):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       socks: 2.8.9
     transitivePeerDependencies:
       - supports-color
@@ -3321,14 +3323,14 @@ snapshots:
     dependencies:
       through: 2.3.8
 
-  sqlite3@6.0.1:
+  sqlite3@6.0.1(supports-color@7.2.0):
     dependencies:
       bindings: 1.5.0
       node-addon-api: 8.6.0
       prebuild-install: 7.1.3
       tar: 7.5.11
     optionalDependencies:
-      node-gyp: 12.2.0
+      node-gyp: 12.2.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
